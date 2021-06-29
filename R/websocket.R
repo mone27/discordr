@@ -106,6 +106,12 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
         invisible(self)
       },
       
+      #' Closes websocket connection
+      finalize = function(){
+        private$resume_on_close <- FALSE
+        private$ws$close()
+      },
+      
       #'Start the bot
       #' 
       #' @description starts the bot and enters in an infinite later loop
@@ -114,7 +120,7 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
         private$connect_ws()
         print("Started bot")
         # in interactive session returns control
-        if (interactive()){return(invisible(private))}
+        if (interactive()){return(invisible(self))}
         while(TRUE){
           # won't return until a later callback is executed
           later::run_now(timeoutSecs = Inf)
@@ -207,6 +213,7 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
       last_s = "Null", # keep track of last seq number sent by discord
       intent = NULL,
       header = NULL,
+      resume_on_close = TRUE, # by default resumes if the ws closes, but not if the object is intentioanlly removed
       
       #' create a new websocket and connect to it
       connect_ws = function(){
@@ -215,7 +222,7 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
         # initialize websocket
         private$ws <- websocket::WebSocket$new(ws_endpoint, autoConnect = FALSE)
         private$ws$onMessage(function(event) {
-          private$receiver_switcher(event$data)
+          private$op_switcher(event$data)
         })
         private$ws$onClose(private$handle_ws_close)
         private$ws$onError(function(event) {
@@ -231,9 +238,11 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
         logwarn("Client disconnected with code ", event$code,
                 " and reason ", event$reason, "\n", sep = "")
         # trying to reconnect which then will send a resume request
-        private$connect_ws() # this creates a new websocket a reconnects
+        # this creates a new websocket a reconnects
+        # not if resume on close is false
+        if(private$resume_on_close) private$connect_ws() 
       },
-      
+  
       update_seq = function(msg){
         # need to update the last s for the heartbeat and resume
         # may need to find a better place for this
@@ -243,10 +252,9 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
       },
       
       #' switcher for op code
-      receiver_switcher = function(msg){
+      op_switcher = function(msg){
         # parse message
         msg <- fromJSON(msg)
-        
         logdebug("Received message")
         logdebug(msg)
         
@@ -269,7 +277,11 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
         event_name <- event$t
         
         if (event_name %in% names(private$event_handlers)){
+          logdebug("about to handle event")
           private$event_handlers[[event_name]](event$d)
+        }
+        else{
+          logdebug("unhandled event")
         }
       },
       
