@@ -62,7 +62,7 @@ paste_url <- function(...){
 #' @description this is the main class for the discord bot
 #' it handles all the incoming messages and events
 #' @export
-DiscordrBot <- R6::R6Class("DiscordBot",
+DiscordrBot <- R6::R6Class("DiscordrBot",
     public = list(
       #' Create a new bot
       #' the bot won't be started yet, but it is possible to register event handlers
@@ -156,23 +156,13 @@ DiscordrBot <- R6::R6Class("DiscordBot",
       
       ### - REST API
       
-      #' Send discord message
-      #' 
-      #' sends a discord message on a given channel id
-      #' 
-      #' @param message message content
-      #' @param channel_id id of the channel
-      send_message = function(message, channel_id){
-        path <- paste_url("channels", channel_id, "messages")
-        body <- list(content=message)
-        self$discord_post_api(path, body)
-      },
-      
+      #' return the endpoint of Websocket connections
       get_ws_endpoint = function(){
         res <- self$discord_get_api("gateway")
         url <- httr::content(res, "parsed")$url
         return(httr::modify_url(url, query=list(encoding = "json", v=9)))
       },
+      
       
       #' general GET request to discord
       #' 
@@ -192,6 +182,7 @@ DiscordrBot <- R6::R6Class("DiscordBot",
       #' @param path the path from the discord base api.
       #' 
       #' @param body a list that will the body of the http request.
+      #'  It will automatically encoded in json 
       discord_post_api = function(path, body){
         url <- paste_url(base, path)
         res <- httr::POST(

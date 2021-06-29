@@ -15,7 +15,6 @@ it handles all the incoming messages and events
 \item \href{#method-register_op_handler}{\code{DiscordrBot$register_op_handler()}}
 \item \href{#method-register_event_handler}{\code{DiscordrBot$register_event_handler()}}
 \item \href{#method-send_payload}{\code{DiscordrBot$send_payload()}}
-\item \href{#method-send_message}{\code{DiscordrBot$send_message()}}
 \item \href{#method-get_ws_endpoint}{\code{DiscordrBot$get_ws_endpoint()}}
 \item \href{#method-discord_get_api}{\code{DiscordrBot$discord_get_api()}}
 \item \href{#method-discord_post_api}{\code{DiscordrBot$discord_post_api()}}
@@ -108,27 +107,7 @@ send payload directly to the websocket}
 \item{\code{opcode}}{websocket OP CODE}
 
 \item{\code{data}}{list that represents data to be sent in payload
-Send discord message
-
-sends a discord message on a given channel id}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-send_message"></a>}}
-\if{latex}{\out{\hypertarget{method-send_message}{}}}
-\subsection{Method \code{send_message()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{DiscordrBot$send_message(message, channel_id)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{message}}{message content}
-
-\item{\code{channel_id}}{id of the channel
+return the endpoint of Websocket connections
 general GET request to discord}
 }
 \if{html}{\out{</div>}}
@@ -174,6 +153,7 @@ general POST request to discord}
 \item{\code{path}}{the path from the discord base api.}
 
 \item{\code{body}}{a list that will the body of the http request.
+It will automatically encoded in json
 create a new websocket and connect to it
 switcher for op code
 Switch according to received events
