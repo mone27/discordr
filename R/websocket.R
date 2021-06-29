@@ -323,7 +323,7 @@ DiscordrBot <- R6::R6Class("DiscordrBot",
       #' The session is invalid for discord
       #' need to reconnect again
       handle_invalid_session = function(msg){
-        lodebug("Handling invalid session")
+        logdebug("Handling invalid session")
         private$first_connection <- T # reset connection
         private$send_identify()
       },
