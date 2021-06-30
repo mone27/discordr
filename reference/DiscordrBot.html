@@ -73,7 +73,7 @@ it handles all the incoming messages and events" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">discordr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.1.9001</span>
       </span>
     </div>
 
@@ -123,6 +123,7 @@ it handles all the incoming messages and events</p>
 
 <ul>
 <li><p><a href='#method-new'><code>DiscordrBot$new()</code></a></p></li>
+<li><p><a href='#method-finalize'><code>DiscordrBot$finalize()</code></a></p></li>
 <li><p><a href='#method-start'><code>DiscordrBot$start()</code></a></p></li>
 <li><p><a href='#method-register_op_handler'><code>DiscordrBot$register_op_handler()</code></a></p></li>
 <li><p><a href='#method-register_event_handler'><code>DiscordrBot$register_event_handler()</code></a></p></li>
@@ -144,9 +145,16 @@ it handles all the incoming messages and events</p>
 
 <dt><code>intent</code></dt><dd><p>the intent(s) that the bot should access.
 Discordr defines constant for the possible intents
+Closes websocket connection
 Start the bot</p></dd>
 
 </dl><p></div></p>
+<p><hr>
+<a id="method-finalize"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>finalize()</code></h3>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>DiscordrBot</span><span class='op'>$</span><span class='fu'>finalize</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+
 <p><hr>
 <a id="method-start"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='https://rdrr.io/r/stats/start.html'>start()</a></code></h3>
 <p>starts the bot and enters in an infinite later loop
