@@ -11,6 +11,7 @@ it handles all the incoming messages and events
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{DiscordrBot$new()}}
+\item \href{#method-finalize}{\code{DiscordrBot$finalize()}}
 \item \href{#method-start}{\code{DiscordrBot$start()}}
 \item \href{#method-register_op_handler}{\code{DiscordrBot$register_op_handler()}}
 \item \href{#method-register_event_handler}{\code{DiscordrBot$register_event_handler()}}
@@ -36,10 +37,20 @@ it handles all the incoming messages and events
 
 \item{\code{intent}}{the intent(s) that the bot should access.
 Discordr defines constant for the possible intents
+Closes websocket connection
 Start the bot}
 }
 \if{html}{\out{</div>}}
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-finalize"></a>}}
+\if{latex}{\out{\hypertarget{method-finalize}{}}}
+\subsection{Method \code{finalize()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{DiscordrBot$finalize()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-start"></a>}}

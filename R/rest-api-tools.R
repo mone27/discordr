@@ -30,7 +30,8 @@ send_message = function(message, channel_id, bot){
 #'  
 #' @param channel_id id of the channel where the embed should be sent
 #' @param bot an instance of DiscordrBot
-#'   
+#' 
+#' @export  
 send_embed = function(embed, channel_id, bot){
   stopifnot(is(embed, "discordr_embed"), is(bot, "DiscordrBot"))
   
