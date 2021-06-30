@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://discordr.mone27.net/index.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/DiscordrBot.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/enable_console_logging.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/enable_file_logging.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/new_embed.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/paste_url.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/send_embed.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/send_message.html</loc>
+  </url>
+  <url>
+    <loc>https://discordr.mone27.net/reference/to_unboxed.html</loc>
+  </url>
+</urlset>

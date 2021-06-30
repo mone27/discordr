@@ -2,5 +2,8 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-06-30T06:20Z
+last_built: 2021-06-30T16:51Z
+urls:
+  reference: https://discordr.mone27.net/reference
+  article: https://discordr.mone27.net/articles
 
