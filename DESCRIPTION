@@ -1,6 +1,6 @@
 Package: discordr
 Title: Discord Bot in R
-Version: 0.0.1.9000
+Version: 0.0.1.9001
 Authors@R: 
     person(given = "Simone",
            family = "Massaro",
